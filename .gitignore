@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ensure data in CSV format are not uploaded for copyright reasons
+*.csv
