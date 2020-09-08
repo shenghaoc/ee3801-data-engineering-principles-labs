@@ -1,13 +1,13 @@
 import pandas as pd
 
-df2 = pd.read_csv('bodyfat2.csv')
-df3 = pd.read_csv('bodyfat3.csv')
+bodyfat2 = pd.read_csv('bodyfat2.csv')
+bodyfat3 = pd.read_csv('bodyfat3.csv')
 
 # 1(a)
 print('1(a)')
 
 # Select columns from neck onwards till wrist
-bodyfat2_neck_to_wrist = df2.iloc[:, 5:15]
+bodyfat2_neck_to_wrist = bodyfat2.iloc[:, 5:15]
 
 # Compute the mean, median, and sum, for each individual
 bodyfat2_neck_to_wrist_mean = bodyfat2_neck_to_wrist.mean(1)
@@ -52,3 +52,18 @@ print('1(b)')
 print(bodyfat2_neck_to_wrist.mean())
 print(bodyfat2_neck_to_wrist.median())
 print(bodyfat2_neck_to_wrist.sum())
+
+# 2
+bodyfat2_without_age_weight_height = bodyfat2.drop(columns=['age', 'weight', 'height'])
+
+bodyfat2_without_age_weight_height_max_min_with_id_list = []
+for column in bodyfat2_without_age_weight_height:
+    bodyfat2_without_age_weight_height_max_min_with_id_single_row = [bodyfat2_without_age_weight_height[column].max(),
+                                                                     bodyfat2_without_age_weight_height[column].idxmax(),
+                                                                     bodyfat2_without_age_weight_height[column].min(),
+                                                                     bodyfat2_without_age_weight_height[column].idxmin()]
+
+    bodyfat2_without_age_weight_height_max_min_with_id_list\
+        .append(bodyfat2_without_age_weight_height_max_min_with_id_single_row)
+print(pd.DataFrame(bodyfat2_without_age_weight_height_max_min_with_id_list, index=bodyfat2_without_age_weight_height.columns,
+      columns=['Max value', 'Individual ID', 'Min value', 'Individual ID']).rename_axis('Feature',  axis='columns'))
