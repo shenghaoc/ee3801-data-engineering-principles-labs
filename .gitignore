@@ -130,3 +130,6 @@ dmypy.json
 
 # Ensure data in CSV format are not uploaded for copyright reasons
 *.csv
+
+# IDEA files
+/.idea/
