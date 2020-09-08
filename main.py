@@ -45,3 +45,10 @@ bodyfat2_top_bottom_3_sum = bodyfat2_neck_to_wrist_sum.head(3) \
 bodyfat2_top_bottom_3 = pd.concat([bodyfat2_top_bottom_3_mean,
                                    bodyfat2_top_bottom_3_median,
                                    bodyfat2_top_bottom_3_sum], axis=1)
+
+# 1(b)
+print('1(b)')
+
+print(bodyfat2_neck_to_wrist.mean())
+print(bodyfat2_neck_to_wrist.median())
+print(bodyfat2_neck_to_wrist.sum())
