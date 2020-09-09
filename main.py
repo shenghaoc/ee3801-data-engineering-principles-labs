@@ -107,7 +107,7 @@ bodyfat3_means = bodyfat3.mean()
 bodyfat3b = bodyfat3.fillna(value=bodyfat3_means)
 bodyfat3b_means = bodyfat3b.mean()
 
-print(bodyfat3_means - bodyfat3b_means)
+print(bodyfat2_means - bodyfat3b_means)
 
 print()
 
@@ -117,7 +117,7 @@ bodyfat3_medians = bodyfat3.median()
 bodyfat3c = bodyfat3.fillna(value=bodyfat3_medians)
 bodyfat3c_medians = bodyfat3c.median()
 
-print(bodyfat3_medians - bodyfat3c_medians)
+print(bodyfat2_medians - bodyfat3c_medians)
 
 print()
 
