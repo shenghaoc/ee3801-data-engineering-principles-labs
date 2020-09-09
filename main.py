@@ -67,14 +67,18 @@ bodyfat2_without_age_weight_height = bodyfat2.drop(columns=['age', 'weight', 'he
 bodyfat2_without_age_weight_height_max_min_with_id_list = []
 for column in bodyfat2_without_age_weight_height:
     bodyfat2_without_age_weight_height_max_min_with_id_single_row = [bodyfat2_without_age_weight_height[column].max(),
-                                                                     bodyfat2_without_age_weight_height[column].idxmax(),
+                                                                     bodyfat2_without_age_weight_height[
+                                                                         column].idxmax(),
                                                                      bodyfat2_without_age_weight_height[column].min(),
-                                                                     bodyfat2_without_age_weight_height[column].idxmin()]
+                                                                     bodyfat2_without_age_weight_height[
+                                                                         column].idxmin()]
 
-    bodyfat2_without_age_weight_height_max_min_with_id_list\
+    bodyfat2_without_age_weight_height_max_min_with_id_list \
         .append(bodyfat2_without_age_weight_height_max_min_with_id_single_row)
-print(pd.DataFrame(bodyfat2_without_age_weight_height_max_min_with_id_list, index=bodyfat2_without_age_weight_height.columns,
-      columns=['Max value', 'Individual ID', 'Min value', 'Individual ID']).rename_axis('Feature',  axis='columns'))
+print(pd.DataFrame(bodyfat2_without_age_weight_height_max_min_with_id_list,
+                   index=bodyfat2_without_age_weight_height.columns,
+                   columns=['Max value', 'Individual ID', 'Min value', 'Individual ID']).rename_axis('Feature',
+                                                                                                     axis='columns'))
 
 print()
 
@@ -82,11 +86,11 @@ print()
 print('3')
 bodyfat2_stds = bodyfat2.std()
 bodyfat2_num_within_10_percent_std_of_means = bodyfat2[(bodyfat2 >= bodyfat2_means - 0.1 * bodyfat2_stds)
-               & (bodyfat2 <= bodyfat2_means + 0.1 * bodyfat2_stds)].count()
+                                                       & (bodyfat2 <= bodyfat2_means + 0.1 * bodyfat2_stds)].count()
 print(bodyfat2_num_within_10_percent_std_of_means)
 
 bodyfat2_num_within_10_percent_std_of_medians = bodyfat2[(bodyfat2 >= bodyfat2_medians - 0.1 * bodyfat2_stds)
-               & (bodyfat2 <= bodyfat2_medians + 0.1 * bodyfat2_stds)].count()
+                                                         & (bodyfat2 <= bodyfat2_medians + 0.1 * bodyfat2_stds)].count()
 print(bodyfat2_num_within_10_percent_std_of_medians)
 
 print()
@@ -98,7 +102,7 @@ print(pd.isna(bodyfat3).sum())
 print()
 
 # 5(a)
-print('5')
+print('5(a)')
 bodyfat3_means = bodyfat3.mean()
 bodyfat3b = bodyfat3.fillna(value=bodyfat3_means)
 bodyfat3b_means = bodyfat3b.mean()
@@ -108,9 +112,25 @@ print(bodyfat3_means - bodyfat3b_means)
 print()
 
 # 5(b)
-print('5')
+print('5(b)')
 bodyfat3_medians = bodyfat3.median()
 bodyfat3c = bodyfat3.fillna(value=bodyfat3_medians)
 bodyfat3c_medians = bodyfat3c.median()
 
 print(bodyfat3_medians - bodyfat3c_medians)
+
+print()
+
+# 5(c)
+print('5(c)')
+print('TODO')
+
+print()
+
+# 6(i)
+print('6(i)')
+bodyfat2_normalized = (bodyfat2 - bodyfat2_means) / bodyfat2_stds
+print(bodyfat2_normalized.head(3))
+print(bodyfat2_normalized.tail(3))
+
+print()
