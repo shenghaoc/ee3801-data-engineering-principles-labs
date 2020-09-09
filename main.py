@@ -93,4 +93,15 @@ print()
 
 #4
 print('4')
-print(bodyfat3.isnull().sum())
+print(pd.isna(bodyfat3).sum())
+
+print()
+
+#5
+print('5')
+bodyfat3_means = bodyfat3.mean()
+bodyfat3b = bodyfat3.fillna(value=bodyfat3_means)
+bodyfat3b_means = bodyfat3b.mean()
+
+print(bodyfat3_means)
+print(bodyfat3b_means)
