@@ -64,20 +64,9 @@ print()
 print('2')
 bodyfat2_without_age_weight_height = bodyfat2.drop(columns=['age', 'weight', 'height'])
 
-bodyfat2_without_age_weight_height_max_min_with_id_list = []
-for column in bodyfat2_without_age_weight_height:
-    bodyfat2_without_age_weight_height_max_min_with_id_single_row = [bodyfat2_without_age_weight_height[column].max(),
-                                                                     bodyfat2_without_age_weight_height[
-                                                                         column].idxmax(),
-                                                                     bodyfat2_without_age_weight_height[column].min(),
-                                                                     bodyfat2_without_age_weight_height[
-                                                                         column].idxmin()]
-
-    bodyfat2_without_age_weight_height_max_min_with_id_list \
-        .append(bodyfat2_without_age_weight_height_max_min_with_id_single_row)
-print(pd.DataFrame(bodyfat2_without_age_weight_height_max_min_with_id_list,
-                   index=bodyfat2_without_age_weight_height.columns,
-                   columns=['Max value', 'Individual ID', 'Min value', 'Individual ID'])
+print(pd.concat([bodyfat2_without_age_weight_height.max(), bodyfat2_without_age_weight_height.idxmax(),
+                 bodyfat2_without_age_weight_height.min(), bodyfat2_without_age_weight_height.idxmin()], axis=1)
+      .set_axis(['Max value', 'Individual ID', 'Min value', 'Individual ID'], axis='columns')
       .rename_axis('Feature'))
 
 print()
