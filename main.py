@@ -149,9 +149,9 @@ print()
 
 # 5(c)
 print('5(c)')
-print('Imputation using means appears to be more accurate, closer to original results. '
-      'Using means, only for weight was the difference greater than 1, and it was only by 0.001302. '
-      'On the other hand, using medians, for both hip and thigh the difference exceeded 1. '
+print('Imputation using means appears to be more accurate, closer to original results.\n'
+      'Using means, only for weight was the difference greater than 1, and it was only by 0.001302.\n'
+      'On the other hand, using medians, for both hip and thigh the difference exceeded 1.\n'
       'For hip and thigh, values are generally lower than weight, meaning the inaccuracy is more significant.')
 
 print()
