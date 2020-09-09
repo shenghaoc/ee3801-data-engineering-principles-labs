@@ -130,7 +130,13 @@ print()
 # 6(i)
 print('6(i)')
 bodyfat2_normalized = (bodyfat2 - bodyfat2_means) / bodyfat2_stds
-print(bodyfat2_normalized.head(3))
-print(bodyfat2_normalized.tail(3))
+print(bodyfat2_normalized.head(3).to_string())
+print(bodyfat2_normalized.tail(3).to_string())
 
 print()
+
+# 6(ii)
+print('6(ii)')
+bodyfat2_normalized_means = bodyfat2_normalized.mean()
+bodyfat2_normalized_greater_than_means = bodyfat2_normalized.gt(bodyfat2_normalized_means).sum()
+print(bodyfat2_normalized_greater_than_means)
