@@ -59,6 +59,7 @@ bodyfat2_means = bodyfat2.mean()
 bodyfat2_medians = bodyfat2.median()
 bodyfat2_sums = bodyfat2.sum()
 
+# YOU DID NOT STATE ANYTHING ABOUT DATAFRAME CREATION IN THE QUESTION
 print('The means of the values of each feature')
 print(bodyfat2_means.to_string())
 print()
@@ -148,7 +149,10 @@ print()
 
 # 5(c)
 print('5(c)')
-print('TODO')
+print('Imputation using means appears to be more accurate, closer to original results. '
+      'Using means, only for weight was the difference greater than 1, and it was only by 0.001302. '
+      'On the other hand, using medians, for both hip and thigh the difference exceeded 1. '
+      'For hip and thigh, values are generally lower than weight, meaning the inaccuracy is more significant.')
 
 print()
 
