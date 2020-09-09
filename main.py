@@ -46,6 +46,8 @@ bodyfat2_top_bottom_3 = pd.concat([bodyfat2_top_bottom_3_mean,
                                    bodyfat2_top_bottom_3_median,
                                    bodyfat2_top_bottom_3_sum], axis=1)
 
+print()
+
 # 1(b)
 print('1(b)')
 bodyfat2_means = bodyfat2.mean()
@@ -55,6 +57,8 @@ bodyfat2_sums = bodyfat2.sum()
 print(bodyfat2_means)
 print(bodyfat2_medians)
 print(bodyfat2_sums)
+
+print()
 
 # 2
 print('2')
@@ -72,11 +76,21 @@ for column in bodyfat2_without_age_weight_height:
 print(pd.DataFrame(bodyfat2_without_age_weight_height_max_min_with_id_list, index=bodyfat2_without_age_weight_height.columns,
       columns=['Max value', 'Individual ID', 'Min value', 'Individual ID']).rename_axis('Feature',  axis='columns'))
 
+print()
+
 # 3
 print('3')
 bodyfat2_stds = bodyfat2.std()
-print(bodyfat2[(bodyfat2 >= bodyfat2_means - 0.1 * bodyfat2_stds)
-               & (bodyfat2 <= bodyfat2_means + 0.1 * bodyfat2_stds)].count())
+bodyfat2_num_within_10_percent_std_of_means = bodyfat2[(bodyfat2 >= bodyfat2_means - 0.1 * bodyfat2_stds)
+               & (bodyfat2 <= bodyfat2_means + 0.1 * bodyfat2_stds)].count()
+print(bodyfat2_num_within_10_percent_std_of_means)
 
-print(bodyfat2[(bodyfat2 >= bodyfat2_medians - 0.1 * bodyfat2_stds)
-               & (bodyfat2 <= bodyfat2_medians + 0.1 * bodyfat2_stds)].count())
+bodyfat2_num_within_10_percent_std_of_medians = bodyfat2[(bodyfat2 >= bodyfat2_medians - 0.1 * bodyfat2_stds)
+               & (bodyfat2 <= bodyfat2_medians + 0.1 * bodyfat2_stds)].count()
+print(bodyfat2_num_within_10_percent_std_of_medians)
+
+print()
+
+#4
+print('4')
+print(bodyfat3.isnull().sum())
