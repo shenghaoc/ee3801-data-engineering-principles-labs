@@ -91,17 +91,26 @@ print(bodyfat2_num_within_10_percent_std_of_medians)
 
 print()
 
-#4
+# 4
 print('4')
 print(pd.isna(bodyfat3).sum())
 
 print()
 
-#5
+# 5(a)
 print('5')
 bodyfat3_means = bodyfat3.mean()
 bodyfat3b = bodyfat3.fillna(value=bodyfat3_means)
 bodyfat3b_means = bodyfat3b.mean()
 
-print(bodyfat3_means)
-print(bodyfat3b_means)
+print(bodyfat3_means - bodyfat3b_means)
+
+print()
+
+# 5(b)
+print('5')
+bodyfat3_medians = bodyfat3.median()
+bodyfat3c = bodyfat3.fillna(value=bodyfat3_medians)
+bodyfat3c_medians = bodyfat3c.median()
+
+print(bodyfat3_medians - bodyfat3c_medians)
