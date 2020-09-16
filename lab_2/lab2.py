@@ -119,26 +119,33 @@ print(overall_annual_sugar_related_production_2010_to_2013_fr_my)
 # 6(c)
 overall_annual_sugar_related_production_2010_to_2013_fr_my_condensed = \
     overall_annual_sugar_related_production_2010_to_2013_fr_my.groupby('Country').sum().transpose()
-overall_annual_sugar_related_production_2010_to_2013_fr_my_condensed.plot(subplots=True, legend=True)
+overall_annual_sugar_related_production_2010_to_2013_fr_my_condensed.plot(subplots=True, legend=True, sharex=False)
 
 print()
 
 # 6(d)
 overall_annual_sugar_related_production_2010_to_2013_fr_my.set_index('Food Type', append=True).transpose()\
-    .plot(subplots=True, legend=True)
+    .plot(subplots=True, legend=True, layout=(2,2), sharex=False, figsize=(10,10))
 print()
 
 # 6(e)
-# TODO
+print('The general trends of falling feed production and rising food production are the same.\n'
+      'However, feed production appears to be recovering, with France being ahead of Malaysia in '
+      'this aspect. Feed production for France flatlined from Y2011 to Y2012, and rose from '
+      'Y2012 to Y2013. On the other hand, feed production for Malaysia remained on the '
+      'decline and only from Y2012 to Y2013 did the decline begin to slow noticeably.\n'
+      'For France, year-on-year growth rose consistently from Y2010 to Y2013. Malaysia\'s '
+      'trend was similar except for Y2012 to Y2013, when its year-on-year growth fell instead.\n'
+      'Both feed production and food production are significantly higher in France than in Malaysia.'
+                  )
+print()
 
 # 6(f)
 overall_annual_sugar_related_production_2012_fr_my_pct_change = \
     overall_annual_sugar_related_production_2010_to_2013_fr_my.sort_values(by=['Food Type'])['Y2012'].pct_change()
-print("3333333")
 overall_annual_sugar_related_production_2012_fr_my_pct_change \
     = overall_annual_sugar_related_production_2012_fr_my_pct_change.drop(index='Malaysia')
 overall_annual_sugar_related_production_2012_fr_my_pct_change.index = ['Feed', 'Food']
 print(overall_annual_sugar_related_production_2012_fr_my_pct_change.to_string())
-# print(overall_annual_sugar_related_production_2010_to_2013_france['Y2012'].pct_change())
 
-# plt.show()
+plt.show()
