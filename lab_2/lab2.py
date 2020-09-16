@@ -124,6 +124,21 @@ overall_annual_sugar_related_production_2010_to_2013_fr_my_condensed.plot(subplo
 print()
 
 # 6(d)
-overall_annual_sugar_related_production_2010_to_2013_fr_my.set_index('Food Type', append=True).transpose().plot(subplots=True, legend=True)
-plt.show()
+overall_annual_sugar_related_production_2010_to_2013_fr_my.set_index('Food Type', append=True).transpose()\
+    .plot(subplots=True, legend=True)
 print()
+
+# 6(e)
+# TODO
+
+# 6(f)
+overall_annual_sugar_related_production_2012_fr_my_pct_change = \
+    overall_annual_sugar_related_production_2010_to_2013_fr_my.sort_values(by=['Food Type'])['Y2012'].pct_change()
+print("3333333")
+overall_annual_sugar_related_production_2012_fr_my_pct_change \
+    = overall_annual_sugar_related_production_2012_fr_my_pct_change.drop(index='Malaysia')
+overall_annual_sugar_related_production_2012_fr_my_pct_change.index = ['Feed', 'Food']
+print(overall_annual_sugar_related_production_2012_fr_my_pct_change.to_string())
+# print(overall_annual_sugar_related_production_2010_to_2013_france['Y2012'].pct_change())
+
+# plt.show()
