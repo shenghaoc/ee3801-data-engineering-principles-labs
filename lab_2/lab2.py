@@ -57,7 +57,7 @@ print(overall_and_average_and_percentage_food_production['APPYPC'][
 print()
 
 # 3
-plt.figure(figsize=(14, 14),)
+plt.figure(figsize=(14, 14))
 patches, text = plt.pie(overall_and_average_and_percentage_food_production['GAPPC'], pctdistance=None)
 plt.legend(patches,
            overall_and_average_and_percentage_food_production.index + ': ' + (
@@ -140,16 +140,14 @@ print(annual_sugar_related_production_2010_to_2013_fr_my)
 # 6(c)
 annual_sugar_related_production_2010_to_2013_fr_my_condensed = \
     annual_sugar_related_production_2010_to_2013_fr_my.groupby('Country').sum().transpose()
-graph = annual_sugar_related_production_2010_to_2013_fr_my_condensed.plot(subplots=True, legend=True, sharex=False,
+annual_sugar_related_production_2010_to_2013_fr_my_condensed.plot(legend=True, sharex=False,
                                                                           figsize=(8, 8))
-graph[0].set_xlabel('Year')
-graph[0].set_ylabel('Production')
-graph[1].set_xlabel('Year')
-graph[1].set_ylabel('Production')
+plt.xlabel('Year')
+plt.ylabel('Production')
 
 # 6(d)
 graph = annual_sugar_related_production_2010_to_2013_fr_my.set_index('Food Type', append=True).transpose() \
-    .plot(subplots=True, legend=True, layout=(2, 2), sharex=False, figsize=(10, 8))
+    .plot(kind='bar', subplots=True, legend=True, layout=(2, 2), sharex=False, figsize=(10, 14), fontsize=5)
 graph[0][0].set_xlabel('Year')
 graph[0][0].set_ylabel('Production')
 graph[0][1].set_xlabel('Year')
