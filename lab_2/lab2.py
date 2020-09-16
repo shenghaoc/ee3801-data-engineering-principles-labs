@@ -27,6 +27,7 @@ overall_and_average_and_percentage_food_production = pd.concat([overall_food_pro
                                                                 average_food_production,
                                                                 percentage_food_production],
                                                                axis=1)
+print('Question 1')
 print('First and last three examples of\noverall production by a country (OPC), \nAverage Production per year by each '
       'country (APPYPC) and\nGlobal Average Production by each country (GAPPC)\n')
 # Use formatter to output GAPPC as percentage
@@ -45,6 +46,7 @@ plt.xlabel('Country')
 plt.ylabel('Average Production per year')
 average_food_production_max = overall_and_average_and_percentage_food_production['APPYPC'].max()
 average_food_production_min = overall_and_average_and_percentage_food_production['APPYPC'].min()
+print('Question 2')
 print(overall_and_average_and_percentage_food_production['APPYPC'][
           overall_and_average_and_percentage_food_production['APPYPC'] == average_food_production_min].rename_axis(
     'Lowest average productions').to_string())
@@ -77,6 +79,7 @@ percentage_food_production_simplified.plot(kind='pie', title='Global Average Pro
 annual_honey_production_2010_to_2013 = fao[fao['Item'] == 'Honey'].set_index('Area').loc[:, 'Y2010':'Y2013']
 annual_honey_production_2010_to_2013 = annual_honey_production_2010_to_2013[
     (annual_honey_production_2010_to_2013 != 0).all(1)]
+print('Question 5(a)')
 print('First and last three examples of annual honey production (2010 to 2013)')
 print(annual_honey_production_2010_to_2013.head(3).append(
     annual_honey_production_2010_to_2013.tail(3)).to_string())
@@ -87,6 +90,7 @@ overall_honey_production_2010_to_2013 = annual_honey_production_2010_to_2013.sum
 annual_honey_production_2010_to_2013 = pd.concat(
     [annual_honey_production_2010_to_2013, overall_honey_production_2010_to_2013], axis=1)
 annual_honey_production_2010_to_2013.to_csv('annual_honey_production_2010_to_2013.csv')
+print('Question 5(b)')
 print('First and last three examples of annual honey production and sum total (2010 to 2013)')
 print(annual_honey_production_2010_to_2013.head(3).append(
     annual_honey_production_2010_to_2013.tail(3)).to_string())
@@ -110,7 +114,6 @@ plt.legend(patches,
                    percentage_honey_production_2010_to_2013 * 100).round(3).astype(str) + '%',
            loc='upper center', bbox_to_anchor=(0.5, 0.1))
 plt.title('Countries with average honey > 5% global production (2010 to 2013)')
-print()
 
 # 6(a)
 annual_sugar_related_production_2010_to_2013 = fao.loc[:, ['Area', 'Item', 'Element', 'Y2010', 'Y2011', 'Y2012',
@@ -126,12 +129,11 @@ annual_sugar_related_production_2010_to_2013_france = annual_sugar_related_produ
     .groupby(['Area', 'Element'], as_index=False).sum().rename(
     columns={'Area': 'Country', 'Element': 'Food Type'})
 
-print()
-
 # 6(b)
 annual_sugar_related_production_2010_to_2013_fr_my = \
     annual_sugar_related_production_2010_to_2013_malaysia \
     .append(annual_sugar_related_production_2010_to_2013_france).set_index('Country')
+print('Question 6(b)')
 print('Annual sugar and allied sugar products production (2010 to 2013) for Malaysia and France')
 print(annual_sugar_related_production_2010_to_2013_fr_my)
 
@@ -144,7 +146,6 @@ graph[0].set_xlabel('Year')
 graph[0].set_ylabel('Production')
 graph[1].set_xlabel('Year')
 graph[1].set_ylabel('Production')
-print()
 
 # 6(d)
 graph = annual_sugar_related_production_2010_to_2013_fr_my.set_index('Food Type', append=True).transpose() \
@@ -157,9 +158,9 @@ graph[1][0].set_xlabel('Year')
 graph[1][0].set_ylabel('Production')
 graph[1][1].set_xlabel('Year')
 graph[1][1].set_ylabel('Production')
-print()
 
 # 6(e)
+print('Question 6(e)')
 print('The general trends of falling feed production and rising food production are the same.\n'
       'However, feed production appears to be recovering, with France being ahead of Malaysia in '
       'this aspect. Feed production for France flatlined from Y2011 to Y2012, and rose from '
@@ -178,6 +179,7 @@ annual_sugar_related_production_2012_fr_my_pct_change = \
 annual_sugar_related_production_2012_fr_my_pct_change \
     = annual_sugar_related_production_2012_fr_my_pct_change.drop(index='Malaysia')
 annual_sugar_related_production_2012_fr_my_pct_change.index = ['Feed', 'Food']
+print('Question 6(f)')
 print('In 2012, France produced 140.625% more feed and 83.707% more food than Malaysia.')
 print((annual_sugar_related_production_2012_fr_my_pct_change * 100).round(3).astype(str) + '%')
 
