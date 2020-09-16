@@ -35,20 +35,24 @@ print()
 
 # 2
 plt.figure()
-overall_and_average_and_percentage_food_production['APPYPC'].plot(kind='bar', figsize=(30, 5),
-                                                                  title='Overall production by country', legend=True)
+
+overall_and_average_and_percentage_food_production['APPYPC'].plot(kind='bar', figsize=(14, 5),
+                                                                  title='Overall production by country', legend=True, fontsize=6)
 plt.xlabel('Countries')
 plt.ylabel('Food Production')
-# max_val = overall_and_average_and_percentage_food_production['APPYPC'].idxmax()
-# min_val = overall_and_average_and_percentage_food_production['APPYPC'].idxmin()
+average_food_production_max = overall_and_average_and_percentage_food_production['APPYPC'].max()
+average_food_production_min = overall_and_average_and_percentage_food_production['APPYPC'].min()
+print(overall_and_average_and_percentage_food_production['APPYPC'][overall_and_average_and_percentage_food_production['APPYPC'] == average_food_production_max].rename_axis('max').to_string())
+print(overall_and_average_and_percentage_food_production['APPYPC'][overall_and_average_and_percentage_food_production['APPYPC'] == average_food_production_min].rename_axis('min').to_string())
+
 print()
 
 # 3
-plt.figure()
-overall_and_average_and_percentage_food_production['GAPPC'].plot(kind='pie', figsize=(30, 30),
-                                                                 title='Overall production by country', legend=True,
-                                                                 labeldistance=None)
-plt.legend(ncol=2, bbox_to_anchor=(1.05, 1))
+plt.figure(figsize=(14,14))
+patches, text = plt.pie(overall_and_average_and_percentage_food_production['GAPPC'], pctdistance=None)
+plt.legend(patches, 
+           overall_and_average_and_percentage_food_production.index + ": " + (overall_and_average_and_percentage_food_production['GAPPC'] * 100).round(3).astype(str) + "%",
+           loc="upper center", ncol=10, fontsize=5, bbox_to_anchor=(0.5, 0.1))
 print()
 
 # 4
@@ -59,7 +63,7 @@ sum_less_than_five_percent = percentage_food_production_simplified[percentage_fo
 percentage_food_production_simplified = percentage_food_production_simplified[
     percentage_food_production_simplified > 0.05].append(pd.Series([sum_less_than_five_percent], index=['Others']))
 
-percentage_food_production_simplified.plot(kind='pie', title='Overall production by country', autopct="%.2f%%")
+percentage_food_production_simplified.plot(kind='pie', title='Overall production by country', autopct="%.2f%%", fontsize=6)
 print()
 
 # 5(a)
@@ -80,6 +84,7 @@ print(overall_annual_honey_production_2010_to_2013.head(3).append(
 print()
 
 # 5(c)
+plt.figure()
 overall_honey_production_sum_2010_to_2013 = overall_honey_production_2010_to_2013.sum()
 percentage_honey_production_2010_to_2013 = overall_honey_production_2010_to_2013 \
                                            / overall_honey_production_sum_2010_to_2013
@@ -89,9 +94,12 @@ sum_less_than_five_percent_2010_to_2013 = percentage_honey_production_2010_to_20
 percentage_honey_production_2010_to_2013 = percentage_honey_production_2010_to_2013[
     percentage_honey_production_2010_to_2013 > 0.05].append(
     pd.Series([sum_less_than_five_percent_2010_to_2013], index=['Others']))
+        
+patches, text = plt.pie(percentage_honey_production_2010_to_2013, pctdistance=None)
+plt.legend(patches, 
+           percentage_honey_production_2010_to_2013.index + ": " + (percentage_honey_production_2010_to_2013 * 100).round(3).astype(str) + "%",
+           loc="upper center", bbox_to_anchor=(0.5, 0.1))
 
-percentage_honey_production_2010_to_2013.plot(kind='pie', title='Overall production by country', autopct="%.2f%%",
-                                              figsize=(10, 10), legend=True)
 print()
 
 # 6(a)
@@ -125,7 +133,7 @@ print()
 
 # 6(d)
 overall_annual_sugar_related_production_2010_to_2013_fr_my.set_index('Food Type', append=True).transpose()\
-    .plot(subplots=True, legend=True, layout=(2,2), sharex=False, figsize=(10,10))
+    .plot(subplots=True, legend=True, layout=(2,2), sharex=False, figsize=(8,8))
 print()
 
 # 6(e)
