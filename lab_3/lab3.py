@@ -1,8 +1,10 @@
 import sys
 import pandas as pd
 
-original_df = pd.read_csv(sys.argv[1], encoding='unicode_escape', index_col=0)
+source, item, element = sys.argv[1:]
 
-filtered_df = original_df[(original_df['Item']==sys.argv[2]) &  (original_df['Element']==sys.argv[3])]
+original_df = pd.read_csv(source, encoding='unicode_escape', index_col=0)
 
-filtered_df.to_csv(sys.argv[2] + '_' + sys.argv[3] + '.csv')
+filtered_df = original_df.query('Item==@item & Element==@element').drop(columns=['Item', 'Element'])
+
+filtered_df.to_csv(item + '_' + element + '.csv')
