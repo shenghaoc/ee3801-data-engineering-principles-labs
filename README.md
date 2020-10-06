@@ -1,4 +1,4 @@
-# ee3801-data-engineering-principles-labs
+# EE3801 Data Engineering Principles Labs
 My EE3801 Data Engineering Principles lab sumissions
 
 ## What I learned from Lab 1
