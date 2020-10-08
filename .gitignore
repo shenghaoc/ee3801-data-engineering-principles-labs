@@ -75,7 +75,8 @@ docs/_build/
 target/
 
 # Jupyter Notebook
-lab_2/.ipynb_checkpoints
+ipynb_checkpoints
+
 
 # IPython
 profile_default/
@@ -133,3 +134,6 @@ dmypy.json
 
 # IDEA files
 .idea/
+
+# 40 GB of data for Lab 5
+lab_5/picasso/
