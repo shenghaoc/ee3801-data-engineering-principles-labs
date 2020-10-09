@@ -136,4 +136,9 @@ dmypy.json
 .idea/
 
 # 40 GB of data for Lab 5
-lab_5/picasso/
+*.edf
+*.hkl
+*.nev
+*.ns5
+*.mat
+*.txt
