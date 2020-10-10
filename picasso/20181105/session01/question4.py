@@ -1,4 +1,3 @@
-# 4j NEED TO WRITE AND SUBMIT
 import numpy as np
 import matplotlib.pyplot as plt
 from neo.io import BlackrockIO
