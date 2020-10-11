@@ -11,4 +11,5 @@ My EE3801 Data Engineering Principles lab sumissions
 ## What I learned from Lab 5 (picasso)
 1. You need a lot of RAM to do data processing.
 2. Using vectorisation, you can plot lines (or maybe rectangles?) perpendicular to an axis with a single function call.
+
 NOTE: Original folder structure had to be retained for this lab hence the folder is not named Lab 5.
